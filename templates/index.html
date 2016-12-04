@@ -1,0 +1,22 @@
+{{ define "content" }}
+
+<h2 class="">
+  Welcome to golangchina.com.cn
+</h2>
+
+{{ range . }}
+
+  <div class="panel panel-default">
+    <span class ="lead"> <i class="fa fa-comment-o"></i> {{ .Topic }}</span>
+  </div>
+  <div class="panel-body">
+    Started by {{ .User.Name }} - {{ .CreatedAt }}- {{ .NumReplies }} posts
+    <div class="pull-right">
+      <a href="/thread/read?id={{ .Uuid }}">Read More</a>
+    </div>
+  </div>
+
+{{ end }}
+
+
+{{ end }}
