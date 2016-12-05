@@ -1,0 +1,20 @@
+{
+  "env":"development",
+  "development":{
+    "database":{
+      "postgres":{
+        "DB_HOST"     :"localhost",
+        "DB_PORT"     : "5433",
+        "DB_USER"     : "postgres",
+        "DB_PASSWORD" : "postgres",
+        "DB_NAME"     : "golangchina"
+      }
+    },
+    "webserver":{
+      "listenAt":"localhost:8080"
+    }
+  },
+  "production":{
+
+  }
+}
