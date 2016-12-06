@@ -1,22 +1,28 @@
 {{ define "content" }}
 
-<h2 class="">
-  Welcome to golangchina.com.cn
-</h2>
-
-{{ range . }}
-
-  <div class="panel panel-default">
-    <span class ="lead"> <i class="fa fa-comment-o"></i> {{ .Topic }}</span>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--6-col">
+    <ul class="demo-list-three mdl-list">
+    {{ range . }}
+    <li class="mdl-list__item mdl-list__item--three-line">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons  mdl-list__item-avatar">person</i>
+        <span>{{ .User.Name }}</span>
+        <a href="/thread/read?id={{ .Uuid }}"><span class="mdl-list__item-text-body">
+          {{ .Topic }} <span>{{ .NumReplies }}</span>
+        </span></a>
+        <span class="mdl-list__item-secondary-content">
+        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+        </span>
+      </span>
+    </li>
+    {{ end }}
+    </ul>
   </div>
-  <div class="panel-body">
-    Started by {{ .User.Name }} - {{ .CreatedAt }}- {{ .NumReplies }} posts
-    <div class="pull-right">
-      <a href="/thread/read?id={{ .Uuid }}">Read More</a>
-    </div>
+  <div class="mdl-cell mdl-cell--4-col">
+    <!--This is a infomation side bar-->
   </div>
-
-{{ end }}
-
-
+  <div class="mdl-cell mdl-cell--1-col"></div>
+</div>
 {{ end }}

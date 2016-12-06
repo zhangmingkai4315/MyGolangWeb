@@ -4,7 +4,7 @@ import (
 	"github.com/spf13/viper"
 	"log"
 )
-
+var Env string
 func InitConfigFile() {
 	viper.SetConfigName("config")
 	viper.AddConfigPath(".")
@@ -14,4 +14,6 @@ func InitConfigFile() {
 	} else {
 		log.Println("Load config file success")
 	}
+	Env=viper.GetString("env")
+	log.Println("Setting server running env to",Env)
 }

@@ -9,11 +9,13 @@ var public_tmpl_files = []string{
 	"templates/layout.html",
 	"templates/public.navbar.html",
 	"templates/index.html",
+	"templates/footer.html",
 }
 var private_tmpl_files = []string{
 	"templates/layout.html",
 	"templates/private.navbar.html",
 	"templates/index.html",
+	"templates/footer.html",
 }
 
 //define the templates for differents users
@@ -23,7 +25,7 @@ var Public_templates, Private_templates *template.Template
 
 func InitTemplates() {
 	//Must function will throw panic when parse failure. That's must done works before start the app!
-	Private_templates = template.Must(template.ParseFiles(public_tmpl_files...))
-	Public_templates = template.Must(template.ParseFiles(private_tmpl_files...))
-	log.Println("Load templates to memory done!")
+	Private_templates = template.Must(template.ParseFiles(private_tmpl_files...))
+	Public_templates = template.Must(template.ParseFiles(public_tmpl_files...))
+	log.Println("Load templates to memory done")
 }

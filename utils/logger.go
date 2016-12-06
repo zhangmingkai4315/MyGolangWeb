@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"github.com/spf13/viper"
 	"io"
 	"io/ioutil"
 	"log"
@@ -25,7 +24,7 @@ func createLoggers(traceHandler, infoHandler, warningHandler, errorHandler io.Wr
 }
 
 func InitLogger() {
-	if viper.GetString("env") == "production" {
+	if Env == "production" {
 		//	create log files for production
 	} else {
 		createLoggers(ioutil.Discard, os.Stdout, os.Stdout, os.Stderr)

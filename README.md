@@ -22,4 +22,14 @@ psql -h YourDatabaseIp -p YourDabasePort --username=postgres -c "create dabase g
 psgl -h YourDatabaseIp -p YourDabasePort --username=postgres -f setup.sql -d golangchina
 ```
 
+Or if you are using mysql, the best way to install it is use docker:
+
+```
+$ docker pull mysql
+$ docker create --name mysql-data --volume /var/lib/mysql mysql
+$ docker run --detach --name mysql-process --env MYSQL_ROOT_PASSWORD=123456 --volumes-from mysql-data mysql
+
+```
+
+
 
