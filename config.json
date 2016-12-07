@@ -2,11 +2,11 @@
   "env":"development",
   "development":{
     "database":{
-      "postgres":{
-        "DB_HOST"     :"localhost",
-        "DB_PORT"     : "5433",
-        "DB_USER"     : "postgres",
-        "DB_PASSWORD" : "postgres",
+      "mysql":{
+        "DB_HOST"     :"192.168.99.100",
+        "DB_PORT"     : "3306",
+        "DB_USER"     : "root",
+        "DB_PASSWORD" : "123456",
         "DB_NAME"     : "golangchina"
       }
     },

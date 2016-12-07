@@ -15,21 +15,30 @@ gpm install
 
 ### 2.Install Database
 
-We are using postgre database for data store, so before next step ,you should install it first. After that you need setting you database username and password, and using psql tools to import the database file "setup.sql"
 
-```
-psql -h YourDatabaseIp -p YourDabasePort --username=postgres -c "create dabase golangchina"
-psgl -h YourDatabaseIp -p YourDabasePort --username=postgres -f setup.sql -d golangchina
-```
-
-Or if you are using mysql, the best way to install it is use docker:
+We will use mysql for data persist layer, the most simple way to install mysql is use docker, just follow the below commands, you will get a mysql instance for develop:
 
 ```
 $ docker pull mysql
 $ docker create --name mysql-data --volume /var/lib/mysql mysql
 $ docker run --detach --name mysql-process --env MYSQL_ROOT_PASSWORD=123456 --volumes-from mysql-data mysql
+$ mysql -uroot -p
+Enter password: 
+
+$mysql -uroot -p < setup.sql 
+```
+if you are using mac osx, remember your also should do port forward for your docker machine to the real docker containe.
 
 ```
+$ docker-machine ip
+192.168.99.100
+$ docker create --name mysql-data --volume /var/lib/mysql mysql
+$docker run --detach --name mysql-process -p 3306:3306 --env MYSQL_ROOT_PASSWORD=123456 --volumes-from mysql-data mysql
 
+$ mysql -h 192.168.99.100 -uroot -p
+Enter password: 
 
+$mysql -uroot -h 192.168.99.100 -p < setup.sql 
+
+```
 

@@ -7,11 +7,12 @@ import (
 
 type User struct {
 	Id        int
-	Uuid      string
 	Name      string
 	Email     string
 	Password  string
 	CreatedAt time.Time
+	Status    string
+	Phone     string
 }
 
 func (user *User) CreateSession() (session Session) {
@@ -26,14 +27,12 @@ func (user *User) CreateSession() (session Session) {
 }
 
 func Encrypt(password string) string {
-
 	return password
 }
 
 func UserByEmail(email string) (user User, err error) {
 	user = User{
 		Id:        1,
-		Uuid:      "uuid1",
 		Name:      "TestUser",
 		Email:     email,
 		Password:  email,
