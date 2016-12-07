@@ -10,12 +10,14 @@ var public_tmpl_files = []string{
 	"templates/public.navbar.html",
 	"templates/index.html",
 	"templates/footer.html",
+	"templates/login.html",
 }
 var private_tmpl_files = []string{
 	"templates/layout.html",
 	"templates/private.navbar.html",
 	"templates/index.html",
 	"templates/footer.html",
+	"templates/login.html",
 }
 
 //define the templates for differents users

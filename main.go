@@ -28,6 +28,7 @@ func main() {
 
 	//handle '/' and any unknown routes
 	r.HandleFunc("/", routes.IndexHandler)
+	r.HandleFunc("/login", routes.LoginHandler)
 	r.HandleFunc("/error", routes.ErrHandler)
 
 	listenAddr := viper.GetString(utils.Env + ".webserver.listenAt")
