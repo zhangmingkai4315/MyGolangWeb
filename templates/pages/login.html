@@ -1,0 +1,53 @@
+{{ define "title"}}<title>GolangChina登入页面</title>{{ end }}
+
+{{ define "content" }}
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-table mdl-cell--2-col-phone"></div>
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--6-col-table mdl-cell--8-col-phone">
+        <div class="login-form-div mdl-grid mdl-shadow--2dp">
+            <form onsubmit="return login()" method="post" action="/login">
+            {{ if .Flash }}
+            <div class="mdl-cell mdl-cell--12-col">
+                <span class="flash-message-warning">{{ .Flash}}</span>
+            </div>
+            {{ end }}
+            <div class="mdl-cell mdl-cell--12-col cell_con">
+                <i class="material-icons">person</i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="login_email" name="email">
+                    <label class="mdl-textfield__label" for="login_email">输入邮箱账号</label>
+                    <span class="mdl-textfield__error">输入邮箱格式无效!</span>
+                </div>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col cell_con">
+                <i class="material-icons">lock</i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="login_password" name="password">
+                    <label class="mdl-textfield__label" for="login_password">输入密码</label>
+                </div>
+            </div>
+            <div class="mdl-cell cell_con">
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rememberme">
+                    <input type="checkbox" id="rememberme" class="mdl-checkbox__input">
+                    <span class="mdl-checkbox__label">记住我</span>
+                </label>
+            </div>
+            <div class="mdl-cell mdl-cell--12-col  login-btn-con">
+                <input type="submit" value="登入" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary btn white-font"/>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--5-col-tablet links">
+                <a class="mdl-button--primary" href="/register">点击注册!</a>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--5-col-tablet links">
+                <a class="mdl-button--primary" href="/forget">忘记密码 ?</a>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-table mdl-cell--2-col-phone">
+            <!--This is a infomation side bar-->
+    </div>
+</div>
+{{ end }}

@@ -21,21 +21,22 @@ func SetFlashMessage(w http.ResponseWriter, r *http.Request, msg []byte) {
 	http.SetCookie(w, &c)
 }
 
-func ShowFlashMessage(w http.ResponseWriter, r *http.Request) ([]byte, error) {
+func ShowFlashMessage(w http.ResponseWriter, r *http.Request) (value string, err error) {
 	c, err := r.Cookie("flash_message")
 	if err != nil {
 		if err == http.ErrNoCookie {
-			return nil, nil
+			return
 		} else {
-			return nil, err
+			return
 
 		}
 	}
-	value, err := decode(c.Value)
+	value_byte, err := decode(c.Value)
 	if err != nil {
-		return nil, err
+		return
 	}
+	value = string(value_byte[:])
 	dc := &http.Cookie{Name: "flash_message", MaxAge: -1, Expires: time.Unix(1, 0)}
 	http.SetCookie(w, dc)
-	return value, nil
+	return
 }

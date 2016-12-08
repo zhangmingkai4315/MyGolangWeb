@@ -1,5 +1,6 @@
 {
   "env":"development",
+  "templates":"./templates",
   "development":{
     "database":{
       "mysql":{

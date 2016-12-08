@@ -18,23 +18,28 @@ func init() {
 	data.InitDataBaseConnect()
 }
 func main() {
-	r := mux.NewRouter()
+	router := mux.NewRouter()
 
 	//mux := http.NewServeMux()
 	//files := http.FileServer(http.Dir("./public"))
 	//mux.Handle("/static/", http.StripPrefix("/static", files))
 
-	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./public"))))
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./public"))))
 
-	//handle '/' and any unknown routes
-	r.HandleFunc("/", routes.IndexHandler)
-	r.HandleFunc("/login", routes.LoginHandler)
-	r.HandleFunc("/error", routes.ErrHandler)
+	//handle '/' for home page
+	router.HandleFunc("/", routes.IndexHandler)
+	router.HandleFunc("/login", routes.LoginHandler).Methods("GET")
+	router.HandleFunc("/login", routes.PostLoginHandler).Methods("POST")
+
+	router.HandleFunc("/register", routes.RegisterHandler).Methods("GET")
+	router.HandleFunc("/register", routes.PostRegisterHandler).Methods("POST")
+
+	router.NotFoundHandler = http.HandlerFunc(routes.NotFoundHandler)
 
 	listenAddr := viper.GetString(utils.Env + ".webserver.listenAt")
 	server := &http.Server{
 		Addr:    listenAddr,
-		Handler: r,
+		Handler: router,
 	}
 	utils.InfoLog.Println("Start WebServer at", listenAddr)
 	if err := server.ListenAndServe(); err != nil {
