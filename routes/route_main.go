@@ -2,28 +2,21 @@ package routes
 
 import (
 	"data"
-	"log"
 	"net/http"
 	"templates"
 )
 
 // index function will handle the '/' query, return the threads data for users
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	threads, err := data.Threads()
-	if err == nil {
-		//check if the user is a anthenticted user.
-		_, sessionErr := data.GetSession(w, r)
-		render_data := map[string]interface{}{
-			"Threads": threads,
-		}
-		if sessionErr == nil {
-			render_data["Auth"] = true
-		} else {
-			render_data["Auth"] = false
+	//check if the user is a anthenticted user.
 
-		}
+	threads, err := data.Threads()
+	render_data:=statusCollection(w,r)
+	if err == nil {
+		render_data["Threads"] = threads
 		templates.RenderTemplate(w, "home", render_data)
 	} else {
-		log.Println(err)
+		//should redirect to a server fail page.
+		templates.RenderTemplate(w, "404", render_data)
 	}
 }

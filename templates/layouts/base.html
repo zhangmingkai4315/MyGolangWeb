@@ -17,6 +17,23 @@
         {{ template "navbar" . }}
         <main class="mdl-layout__content">
           <div class="page-content">
+              {{ if .Flash }}
+                {{ if .FlashSuccess }}
+                    <div class="mdl-cell mdl-cell--12-col">
+                      <div class="alert info">
+                        <span class="closebtn">&times;</span>
+                        {{ .Flash}}
+                      </div>
+                    </div>
+                {{ else }}
+                    <div class="mdl-cell mdl-cell--12-col">
+                      <div class="alert">
+                        <span class="closebtn">&times;</span>
+                        {{ .Flash}}
+                      </div>
+                    </div>
+                {{end}}
+              {{ end }}
               {{ template "content" . }}
           </div>
         </main>

@@ -16,6 +16,7 @@ func init() {
 	utils.InitLogger()
 	templates.InitTemplates()
 	data.InitDataBaseConnect()
+	data.InitSessionStore()
 }
 func main() {
 	router := mux.NewRouter()
@@ -33,6 +34,8 @@ func main() {
 
 	router.HandleFunc("/register", routes.RegisterHandler).Methods("GET")
 	router.HandleFunc("/register", routes.PostRegisterHandler).Methods("POST")
+
+	router.HandleFunc("/logout", routes.LogoutHandler).Methods("GET")
 
 	router.NotFoundHandler = http.HandlerFunc(routes.NotFoundHandler)
 

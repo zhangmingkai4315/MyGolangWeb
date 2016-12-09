@@ -7,3 +7,19 @@ function login(){
      }
      return true;
 }
+
+function register(){
+     var email = $("#register_email").val()
+     var password = $("#register_password").val()
+     var password2 = $("#register_password2").val()
+     var username = $("#register_username").val()
+     if(password!==password2){
+        $("#register_password2").parent().addClass('is-invalid');
+        return false;
+     }
+     //we should do more client validation for users.but right now i will left this work for server.
+     if (email.length==0 || password.length==0||username.length==0){
+        return false;
+     }
+     return true;
+}
