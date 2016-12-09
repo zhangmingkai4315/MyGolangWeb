@@ -36,7 +36,7 @@ func statusCollection(w http.ResponseWriter, r *http.Request) map[string]interfa
 	}
 	flash_message, _ := ShowFlashMessage(w, r)
 	flash_message_type := strings.Split(flash_message, "||")
-	if len(flash_message_type) == 0 {
+	if len(flash_message_type) == 1 {
 		render_data["FlashSuccess"] = false
 	} else {
 		render_data["FlashSuccess"] = true

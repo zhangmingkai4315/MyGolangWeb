@@ -17,16 +17,18 @@
         {{ template "navbar" . }}
         <main class="mdl-layout__content">
           <div class="page-content">
+            <div class="mdl-grid">
+            <div class="mdl-layout-spacer"></div>
               {{ if .Flash }}
                 {{ if .FlashSuccess }}
-                    <div class="mdl-cell mdl-cell--12-col">
+                    <div class="mdl-cell mdl-cell--6-col">
                       <div class="alert info">
                         <span class="closebtn">&times;</span>
                         {{ .Flash}}
                       </div>
                     </div>
                 {{ else }}
-                    <div class="mdl-cell mdl-cell--12-col">
+                    <div class="mdl-cell mdl-cell--6-col">
                       <div class="alert">
                         <span class="closebtn">&times;</span>
                         {{ .Flash}}
@@ -34,7 +36,11 @@
                     </div>
                 {{end}}
               {{ end }}
-              {{ template "content" . }}
+              <div class="mdl-layout-spacer"></div>
+              </div>
+              <div class="mdl-grid">
+                {{ template "content" . }}
+              </div>
           </div>
         </main>
         {{ template "footer"}}
