@@ -4,11 +4,11 @@
     <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-table mdl-cell--2-col-phone"></div>
     <div class="mdl-cell mdl-cell--4-col mdl-cell--6-col-table mdl-cell--8-col-phone">
         <div class="login-form-div mdl-grid mdl-shadow--2dp">
-            <form onsubmit="return register()" method="post" action="/register">
+            <form onsubmit="return register()" method="post" action="/register" class="full-width">
                 <div class="mdl-cell mdl-cell--12-col cell_con">
                     <i class="material-icons">person</i>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width-20">
                         <input class="mdl-textfield__input" type="text" pattern="[a-zA-Z0-9._%+-]{8,}$" id="register_username" name="username">
                         <label class="mdl-textfield__label" for="register_username">输入用户名</label>
                         <span class="mdl-textfield__error">用户名最少包含8个字符长度</span>
@@ -17,7 +17,7 @@
                 <div class="mdl-cell mdl-cell--12-col cell_con">
                     <i class="material-icons">contact_mail</i>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width-20">
                         <input class="mdl-textfield__input" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,10}$" id="register_email" name="email">
                         <label class="mdl-textfield__label" for="register_email">输入邮箱账号</label>
                         <span class="mdl-textfield__error">输入邮箱格式无效</span>
@@ -26,7 +26,7 @@
                 <div class="mdl-cell mdl-cell--12-col cell_con">
                     <i class="material-icons">lock</i>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width-20">
                         <input class="mdl-textfield__input" type="password" id="register_password" pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}$" name="password">
                         <label class="mdl-textfield__label" for="register_password">输入密码</label>
                         <span class="mdl-textfield__error">密码不少于8位,且至少包含一个字母一个数字</span>
@@ -35,7 +35,7 @@
                 <div class="mdl-cell mdl-cell--12-col cell_con">
                     <i class="material-icons">lock_outline</i>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width-20">
                         <input class="mdl-textfield__input" type="password" id="register_password2" pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}$" name="password2">
                         <label class="mdl-textfield__label" for="register_password2">再次输入密码</label>
                         <span class="mdl-textfield__error">两次密码输入不一致</span>
@@ -45,7 +45,7 @@
                     <input type="submit" value="注册" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary btn white-font"/>
                 </div>
                 <div class="mdl-cell mdl-cell--6-col links">
-                    <a class="mdl-button--primary" href="/register">返回登入页面</a>
+                    <a class="mdl-button--primary" href="/login">返回登入页面</a>
                 </div>
             </form>
         </div>
