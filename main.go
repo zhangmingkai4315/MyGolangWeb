@@ -2,8 +2,10 @@ package main
 
 import (
 	"data"
+	"github.com/gorilla/csrf"
 	"github.com/gorilla/mux"
 	"github.com/spf13/viper"
+	"log"
 	"net/http"
 	"routes"
 	_ "routes"
@@ -19,6 +21,7 @@ func init() {
 	data.InitSessionStore()
 }
 func main() {
+
 	router := mux.NewRouter()
 
 	//mux := http.NewServeMux()
@@ -40,12 +43,10 @@ func main() {
 	router.NotFoundHandler = http.HandlerFunc(routes.NotFoundHandler)
 
 	listenAddr := viper.GetString(utils.Env + ".webserver.listenAt")
-	server := &http.Server{
-		Addr:    listenAddr,
-		Handler: router,
-	}
 	utils.InfoLog.Println("Start WebServer at", listenAddr)
-	if err := server.ListenAndServe(); err != nil {
-		utils.ErrorLog.Println("Server start error:", err)
-	}
+
+	csrf.Secure(false)
+	authkey := []byte("IDONTWANTTELLYOUTHATANDIREALLYDONTWANTYOUKNOWIT")
+	println(len(authkey))
+	log.Panic(http.ListenAndServe(listenAddr, csrf.Protect(authkey[0:32], csrf.Secure(false))(router)))
 }

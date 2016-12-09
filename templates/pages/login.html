@@ -6,6 +6,7 @@
     <div class="mdl-cell mdl-cell--4-col mdl-cell--6-col-table mdl-cell--8-col-phone">
         <div class="login-form-div mdl-grid mdl-shadow--2dp">
             <form onsubmit="return login()" method="post" action="/login" class="full-width">
+            {{ .csrfField }}
             <div class="mdl-cell mdl-cell--12-col cell_con">
                 <i class="material-icons">contact_mail</i>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -1,5 +1,6 @@
 github.com/go-sql-driver/mysql
 github.com/spf13/viper
 github.com/gorilla/mux
+github.com/gorilla/csrf
 github.com/oxtoacart/bpool
 

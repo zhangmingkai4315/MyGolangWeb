@@ -8,6 +8,7 @@ import (
 	"strings"
 	"templates"
 	"utils"
+	"github.com/gorilla/csrf"
 )
 
 //func Authenticate(w http.ResponseWriter, r *http.Request) {
@@ -33,6 +34,7 @@ func statusCollection(w http.ResponseWriter, r *http.Request) map[string]interfa
 	authChecker, _ := data.ValidateSession(w, r, userSession)
 	render_data := map[string]interface{}{
 		"Auth": authChecker,
+		csrf.TemplateTag: csrf.TemplateField(r),
 	}
 	flash_message, _ := ShowFlashMessage(w, r)
 	flash_message_type := strings.Split(flash_message, "||")
